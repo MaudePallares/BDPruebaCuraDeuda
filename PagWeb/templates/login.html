@@ -1,0 +1,24 @@
+{%extends "base.html" %} {% block title %}LOGIN{% endblock %} 
+
+
+{% block contenido %}
+<br>
+<br><br>
+<form method="POST">
+<div class="row">
+    <form class="col m12">
+        <div class="input-field col s6">
+          <input placeholder="Usuario" name="Usuario" id="Usuario" type="text" class="validate">
+          <label for="Usuario">Usuario</label>
+        </div>
+        <div class="input-field col s6">
+            <input placeholder="password" name="password" id="password" type="password" class="validate">
+            <label for="password">Contraseña</label>
+        </div>
+        <button class="btn waves-effect waves-light light-blue accent-3" type="submit" name="action">Inicia Sesion
+            <i class="material-icons right">send</i>
+            
+          </button>
+</div>
+</form>
+{% endblock %}

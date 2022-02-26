@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <title>{% block title %}Home{% endblock %}</title>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-wrapper light-blue accent-3">
+          <ul id="nav-mobile" class="left hide-on-med-and-down">
+            {% if user.is_authenticated %}
+            <li><a class="flow-text" id="logout" href="/logout">logout</a></li>
+            {% else %}
+            <li><a class="flow-text" id="login" href="/login">login</a></li>
+            <li><a class="flow-text" id="sign_up" href="/Registrarse">Registrate</a></li>
+            {% endif %}
+          </ul>
+        </div>
+        <style>
+          .alert {
+            padding: 20px;
+            background-color: #f44336;
+            color: white;
+          }
+          .success {
+            padding: 20px;
+            background-color: #40E13B;
+            color: white;
+          }
+          .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+          }
+          
+          .closebtn:hover {
+            color: black;
+          }
+          </style>
+      </nav>
+      {% with messages = get_flashed_messages(with_categories = true) %}
+        {% if messages %}
+         {% for category, message in messages %}
+          {% if category == 'error' %}
+          <div class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+            <strong></strong>  {{message}}
+          </div>
+           {% else %}
+           <div class="success">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+            <strong></strong>  {{message}}
+          </div>
+           {% endif %}
+         {% endfor %}
+        {% endif %}
+      {% endwith %}
+      <div class = "container">
+        {% block contenido %}
+        {% endblock %}
+
+      </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>
