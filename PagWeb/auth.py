@@ -63,3 +63,25 @@ def sign_up():
     return render_template("registro.html", user = current_user)
 
 
+#no terminado
+@auth.route('/principal', methods=['GET', 'POST'])   
+def search():
+    if request.method == 'POST':
+
+         archivo = pd.read_excel('DocCP/SEPOMEX.xls')
+         df = pd.DataFrame(archivo)
+
+         Estados = archivo.sheet_names
+         estado = request.form.get('estado')
+         colonia = request.form.get('colonia')
+         cp =  request.form.get('cp')
+
+         colonias = df[df['d_CP']==cp]['d_asenta']
+         flash('el estado es ' + colonias, category='error')
+         print(colonias)
+    else:
+         flash('CODIGO POSTAL NO VALIDO', category='error')
+         return render_template("principal.html")
+
+
+    return render_template("principal.html", user = current_user)

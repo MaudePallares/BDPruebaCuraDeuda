@@ -7,7 +7,7 @@ class User(db.Model, UserMixin):
     user = db.Column(db.String(150), unique=True)
     password = db.Column(db.String(150))
 
-'''
+
 class Estado(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(25), default=None)
@@ -27,4 +27,3 @@ class Colonia(db.Model):
     name = db.Column(db.String(25), default = None)
     key = db.Column(db.String(25), default = None)
     colonia_id = db.Column(db.Integer, db.ForeignKey('municipio.id'))
-'''
